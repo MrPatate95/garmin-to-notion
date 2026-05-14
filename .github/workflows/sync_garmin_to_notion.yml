@@ -7,9 +7,9 @@ on:
     inputs:
       GARMIN_ACTIVITIES_FETCH_LIMIT:
         type: number
-        default: 10
+        default: 100
 env:
-  TZ: 'America/Toronto'
+  TZ: 'Europe/Paris'
 
 jobs:
   sync:
@@ -31,8 +31,8 @@ jobs:
           NOTION_PR_DB_ID: ${{ secrets.NOTION_PR_DB_ID }}
           NOTION_STEPS_DB_ID: ${{ secrets.NOTION_STEPS_DB_ID }}
           NOTION_SLEEP_DB_ID: ${{ secrets.NOTION_SLEEP_DB_ID }}
-          GARMIN_ACTIVITIES_FETCH_LIMIT: ${{ inputs.GARMIN_ACTIVITIES_FETCH_LIMIT || '10' }}
-          TZ: 'America/Toronto'
+          GARMIN_ACTIVITIES_FETCH_LIMIT: ${{ inputs.GARMIN_ACTIVITIES_FETCH_LIMIT || '100' }}
+          TZ: 'Europe/Paris'
         run: |
           uv run python -m src.workflows.garmin-activities
           uv run python -m src.workflows.personal-records
